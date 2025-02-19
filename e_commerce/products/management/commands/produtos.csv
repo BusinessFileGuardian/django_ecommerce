@@ -1,0 +1,21 @@
+title,description,price,discount_price,stock,sku,category,featured
+Sistema de E-commerce Completo,"Plataforma completa para lojas online, com integração de pagamentos e frete.",5000.00,4500.00,10,ECOMM001,E-commerce,True
+Site Institucional Responsivo,"Site moderno e responsivo para empresas, com design personalizado.",3000.00,,5,SITE001,Web,False
+Automação de Marketing Digital,"Ferramenta para automação de campanhas de marketing em redes sociais.",1200.00,1000.00,20,AUTO001,Automação,True
+Plataforma de Cursos Online,"Sistema para criação e gerenciamento de cursos online com suporte a vídeos e quizzes.",2500.00,,15,PLAT001,Web,False
+Chatbot com IA Avançada,"Chatbot inteligente para atendimento ao cliente com integração em sites e apps.",800.00,700.00,30,CHAT001,IA,True
+Sistema de Gestão Empresarial,"ERP completo para gestão de negócios, incluindo finanças e estoque.",10000.00,9000.00,8,ERP001,Sistemas,True
+Loja Virtual com Integração de Pagamentos,"E-commerce com integração a gateways de pagamento e relatórios de vendas.",4000.00,,12,ECOMM002,E-commerce,False
+Aplicativo Mobile para Delivery,"App para delivery de alimentos com integração a restaurantes e clientes.",6000.00,5500.00,7,APP001,Web,True
+Ferramenta de Análise de Dados,"Software para análise de dados e geração de relatórios personalizados.",1500.00,,25,ANAL001,IA,False
+Automação de Processos Industriais,"Solução para automação de linhas de produção com IoT e IA.",20000.00,18000.00,3,AUTO002,Automação,True
+Site One Page para Startups,"Site one page com design moderno e foco em conversão de leads.",2000.00,,10,SITE002,Web,False
+Plataforma de Gestão de Conteúdo,"CMS personalizado para criação e gerenciamento de conteúdo web.",3500.00,3000.00,18,PLAT002,Web,True
+Sistema de Reservas Online,"Plataforma para reservas em hotéis, restaurantes e eventos.",2800.00,,9,RESER001,Sistemas,False
+Assistente Virtual com Reconhecimento de Voz,"Assistente virtual com reconhecimento de voz para automação de tarefas.",900.00,800.00,22,CHAT002,IA,True
+E-commerce para Pequenas Empresas,"Solução de e-commerce acessível para pequenos negócios.",1800.00,,14,ECOMM003,E-commerce,False
+Sistema de Gestão de Projetos,"Ferramenta para gestão de projetos com Kanban e integração a ferramentas de comunicação.",1200.00,,20,PROJ001,Sistemas,True
+Site de Portfólio para Designers,"Site personalizado para designers exibirem seus trabalhos e projetos.",1500.00,,6,SITE003,Web,False
+Plataforma de E-learning com Gamificação,"Sistema de ensino online com gamificação e certificados.",3200.00,2800.00,11,PLAT003,Web,True
+Automação de Testes de Software,"Ferramenta para automação de testes em aplicações web e mobile.",2200.00,,17,AUTO003,Automação,False
+Sistema de Gestão de Clientes (CRM),"CRM completo para gestão de relacionamento com clientes e vendas.",5000.00,4500.00,13,CRM001,Sistemas,True

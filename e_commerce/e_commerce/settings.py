@@ -5,17 +5,25 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# Diretório base do projeto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-env = environ.Env(DEBUG=(bool, False),)
+# Carregar o arquivo .env
+env = environ.Env(
+    DEBUG=(bool, False),
+    STRIPE_API_KEY=(str, ''),
+    STRIPE_PUB_KEY=(str, '')
+)
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+# Leitura das variáveis de ambiente
 SECRET_KEY = env('SECRET_KEY')  # Sem valor padrão para forçar a configuração via .env
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env('DEBUG')  # Lê a variável DEBUG como bool
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
-STRIPE_API_KEY = env('STRIPE_API_KEY')
-STRIPE_PUB_KEY = env('STRIPE_PUB_KEY')
+# Chaves do Stripe
+STRIPE_API_KEY = env('STRIPE_API_KEY')  # Assumindo que o valor não seja vazio no .env
+STRIPE_PUB_KEY = env('STRIPE_PUB_KEY')  # Assumindo que o valor não seja vazio no .env
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,7 +47,7 @@ INSTALLED_APPS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = 'accounts.User'
-FORCE_SESSION_TO_ONE = False 
+FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION = False
 
 # Configurações de Sessão e CSRF
