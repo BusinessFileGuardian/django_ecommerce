@@ -1,0 +1,157 @@
+WARNING 2025-02-19 21:03:13,932 log Not Found: /static/css/stripe-custom-styles.css
+WARNING 2025-02-19 21:03:13,934 log Not Found: /static/css/main.css
+WARNING 2025-02-19 21:03:13,936 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:03:13,938 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:03:13,941 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:03:13,943 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:03:13,945 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 21:03:14,755 log Not Found: /static/img/logo.png
+WARNING 2025-02-19 21:03:14,757 log Not Found: /static/img/eCommerce.jpg
+WARNING 2025-02-19 21:03:17,216 log Not Found: /favicon.ico
+WARNING 2025-02-19 21:03:24,370 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:03:24,374 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:03:24,378 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:03:24,382 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:03:24,383 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 21:07:53,383 log Not Found: /static/css/stripe-custom-styles.css
+WARNING 2025-02-19 21:07:53,385 log Not Found: /static/css/main.css
+WARNING 2025-02-19 21:07:53,391 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:07:53,393 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:07:53,395 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:07:53,396 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:07:53,398 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 21:07:54,169 log Not Found: /static/img/logo.png
+WARNING 2025-02-19 21:07:54,171 log Not Found: /static/img/eCommerce.jpg
+WARNING 2025-02-19 21:07:56,948 log Not Found: /favicon.ico
+WARNING 2025-02-19 21:07:57,871 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:07:57,889 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:07:57,904 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:07:57,908 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:07:57,909 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 21:08:17,917 log Not Found: /static/css/stripe-custom-styles.css
+WARNING 2025-02-19 21:08:17,922 log Not Found: /static/css/main.css
+WARNING 2025-02-19 21:08:17,926 log Not Found: /static/img/eCommerce.jpg
+WARNING 2025-02-19 21:08:17,927 log Not Found: /static/img/logo.png
+WARNING 2025-02-19 21:08:17,929 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:08:17,931 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:08:17,932 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:08:17,934 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:08:17,936 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 21:08:18,959 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:08:18,967 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:08:18,981 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:08:18,991 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:08:18,992 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 21:08:19,101 log Not Found: /favicon.ico
+WARNING 2025-02-19 21:24:01,371 log Not Found: /static/css/stripe-custom-styles.css
+WARNING 2025-02-19 21:24:01,374 log Not Found: /static/css/main.css
+WARNING 2025-02-19 21:24:01,375 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:24:01,376 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:24:01,378 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:24:01,380 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:24:01,382 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 21:24:01,384 log Not Found: /static/img/logo.png
+WARNING 2025-02-19 21:24:01,385 log Not Found: /static/img/eCommerce.jpg
+WARNING 2025-02-19 21:24:01,496 log Not Found: /static/js/ecommerce/search.js
+WARNING 2025-02-19 21:24:01,500 log Not Found: /static/js/ecommerce/contact.js
+WARNING 2025-02-19 21:24:01,504 log Not Found: /static/js/ecommerce/cart.js
+WARNING 2025-02-19 21:24:01,507 log Not Found: /static/js/toast.js
+WARNING 2025-02-19 21:24:01,511 log Not Found: /static/js/csrf.ajax.js
+WARNING 2025-02-19 22:04:10,260 log Forbidden (CSRF cookie not set.): /
+WARNING 2025-02-19 22:04:10,260 log Forbidden (CSRF cookie not set.): /
+WARNING 2025-02-19 22:04:10,280 log Not Found: /favicon.ico
+WARNING 2025-02-19 22:05:47,072 log Forbidden (CSRF cookie not set.): /
+WARNING 2025-02-19 22:05:47,072 log Forbidden (CSRF cookie not set.): /
+WARNING 2025-02-19 22:05:47,209 log Not Found: /favicon.ico
+ERROR 2025-02-19 22:05:56,977 log Internal Server Error: /products/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "postgres" (172.18.0.2), port 5432 failed: FATAL:  password authentication failed for user "django_traefik"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/views/generic/list.py", line 174, in get
+    context = self.get_context_data()
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/django_ecommerce/e_commerce/products/views.py", line 31, in get_context_data
+    cart_obj, new_obj = Cart.objects.new_or_get(self.request)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/django_ecommerce/e_commerce/carts/models.py", line 26, in new_or_get
+    if qs.count() == 1:
+       ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 620, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 630, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/query.py", line 616, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/base/base.py", line 320, in cursor
+    return self._cursor()
+           ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/base/base.py", line 296, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/base/base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: connection to server at "postgres" (172.18.0.2), port 5432 failed: FATAL:  password authentication failed for user "django_traefik"
+

@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import environ
 from django.contrib.messages import constants as messages
 import logging
@@ -6,20 +7,23 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Diretório base do projeto
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Carregar o arquivo .env
 env = environ.Env(
     DEBUG=(bool, False),
-    STRIPE_API_KEY=(str, ''),
-    STRIPE_PUB_KEY=(str, '')
+    STRIPE_PUB_KEY=(str, ''),
+    STRIPE_API_KEY=(str, '')
+    
 )
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Leitura das variáveis de ambiente
 SECRET_KEY = env('SECRET_KEY')  # Sem valor padrão para forçar a configuração via .env
 DEBUG = env('DEBUG')  # Lê a variável DEBUG como bool
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default=[])
 
 # Chaves do Stripe
 STRIPE_API_KEY = env('STRIPE_API_KEY')  # Assumindo que o valor não seja vazio no .env
@@ -60,6 +64,7 @@ CSRF_COOKIE_SECURE = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',  # Proteção contra CSRF
@@ -116,23 +121,69 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+# Internationalization
+LANGUAGE_CODE = 'pt-br'
+
+TIME_ZONE = 'America/Sao_Paulo'
+
 USE_I18N = True
+
 USE_TZ = True
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static_local")]
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "django_ecommerce/static_cdn", "static_root")
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "django_ecommerce/static_cdn", "media_root")
 
+
+# Default primary key field type
+if not DEBUG:
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'handlers': {
-        'console': {'level': 'DEBUG', 'class': 'logging.StreamHandler'},
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
     },
-    'root': {'handlers': ['console'], 'level': 'DEBUG'},
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'DEBUG' if DEBUG else 'WARNING',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG' if DEBUG else 'WARNING',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG' if DEBUG else 'WARNING',
+            'propagate': False,
+        },
+    },
 }

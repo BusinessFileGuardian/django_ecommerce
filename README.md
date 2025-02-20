@@ -66,14 +66,18 @@ Licença
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter detalhes.
 
 Autor
-[Seu Nome]
+João Batista de Lima Júnior
 
 Agradecimentos
 Agradecemos aos desenvolvedores e comunidades de código aberto pelo seu incrível trabalho e contribuições.
 
 
-Lembre-se de substituir `[Seu Nome]` pelo seu nome ou nome da equipe de desenvolvimento e personalizar o restante do README conforme necessário. Certifique-se também de incluir instruções de configuração adicionais, se houver, e detalhes sobre como executar o projeto em seu ambiente específico.
+Lembre-se de substituir `João Batista de Lima Júnior` pelo seu nome ou nome da equipe de desenvolvimento `Alcateia.Cloud` e personalizar o restante do README conforme necessário. Certifique-se também de incluir instruções de configuração adicionais, se houver, e detalhes sobre como executar o projeto em seu ambiente específico.
+
+Para rodar em docker
+ docker build -t django-e_commerce .
+docker run -p 8000:8000 django-e_commerce
+docker run -it django-e_commerce /bin/bash
 
 
-
-
+docker run -e STRIPE_API_KEY=your-stripe-api-key -p 8000:8000 django-e_commerce
