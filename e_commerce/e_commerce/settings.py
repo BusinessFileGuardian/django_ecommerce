@@ -146,44 +146,24 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "django_ecommerce/static_cd
 if not DEBUG:
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
     
+
+
+LOGGING_DIR = "/logs"
+if not os.path.exists(LOGGING_DIR):
+    os.makedirs(LOGGING_DIR, exist_ok=True)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
     'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        },
         'file': {
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'debug.log'),
-            'formatter': 'verbose',
+            'filename': os.path.join(LOGGING_DIR, 'debug.log'),
         },
     },
     'root': {
-        'handlers': ['console', 'file'],
-        'level': 'DEBUG' if DEBUG else 'WARNING',
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console', 'file'],
-            'level': 'DEBUG' if DEBUG else 'WARNING',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['console', 'file'],
-            'level': 'DEBUG' if DEBUG else 'WARNING',
-            'propagate': False,
-        },
+        'handlers': ['file'],
+        'level': 'DEBUG',
     },
 }

@@ -1,0 +1,49 @@
+FROM python:3.11-slim
+
+# Criar diretório de trabalho
+WORKDIR /app/e_commerce
+
+
+
+# Definir variáveis de ambiente para evitar buffer no output
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Defina variáveis de ambiente essenciais
+# para testar isoladamente o projeto
+# depois retirer para produção
+
+ARG SECRET_KEY
+ARG DATABASE_URL
+ARG DEBUG
+ENV SECRET_KEY=${SECRET_KEY}
+ENV DATABASE_URL=${DATABASE_URL}
+ENV DEBUG=${DEBUG}
+Env STRIPE_API_KEY=${STRIPE_API_KEY}
+ENV STRIPE_PUB_KEY=${STRIPE_PUB_KEY}
+# Criar diretório de trabalho
+COPY . /app/
+
+# Instalar dependências do sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copiar e instalar dependências do projeto
+
+RUN pip install --upgrade pip
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar os arquivos do projeto
+COPY . .
+
+# Coletar arquivos estáticos
+RUN python manage.py collectstatic --noinput
+
+# Expor a porta do container
+EXPOSE 8000
+
+# Comando de execução do container
+CMD ["gunicorn", "e_commerce.wsgi:application", "--bind", "0.0.0.0:8000"]
