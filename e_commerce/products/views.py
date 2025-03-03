@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.utils.text import slugify
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib import messages
@@ -8,6 +9,21 @@ from carts.models import Cart
 from .models import Product
 from .models import Projeto
 
+
+def product_redirect_view(request, pk):
+    """
+    Recupera o produto pelo id (pk) e redireciona para a URL com o slug.
+    Exemplo: /products/id/1/ → /products/sistema-de-e-commerce-completo/
+    """
+    product = get_object_or_404(Product, pk=pk)
+    
+    # Se o slug for numérico, gera um novo slug a partir do título
+    if product.slug.isdigit():
+        novo_slug = slugify(product.title)
+        product.slug = novo_slug
+        product.save(update_fields=['slug'])
+    
+    return redirect('products:detail', slug=product.slug)
 
 def associar_projeto(request, projeto_id):
     projeto = get_object_or_404(Projeto, id=projeto_id)
@@ -153,18 +169,3 @@ def product_detail_view(request, pk=None, *args, **kwargs):
 
 
 
-def verificar_projeto_para_produto(product_id):
-    """
-    Verifica se um produto tem um projeto relacionado e retorna a informação.
-    :param product_id: ID do produto a ser verificado.
-    :return: True se o produto tiver um projeto relacionado, caso contrário, False.
-    """
-    try:
-        produto = Product.objects.get(id=product_id)  # Obtém o produto pelo ID
-        # Verifica se existe um projeto associado a esse produto
-        if produto.projetos.exists():  
-            return True
-        return False
-    except Product.DoesNotExist:
-        # Retorna False caso o produto não seja encontrado
-        return False
