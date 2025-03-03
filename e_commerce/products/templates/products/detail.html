@@ -3,6 +3,7 @@
 {% block content %}
 <div class="container mt-4">
   <div class="row justify-content-center">
+    
     <!-- Coluna da imagem com margem ajustada -->
     <div class="col-12 col-md-6 offset-md-1 mb-4">
       {% if object.images.all %}
@@ -17,11 +18,11 @@
           {% if object.images.count > 1 %}
             <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+              <span class="visually-hidden">Próximo</span>
             </button>
           {% endif %}
         </div>
@@ -54,6 +55,21 @@
       {% if object.category %}
         <p class="mb-4">Categoria: <a href="{% url 'products:category' object.category.slug %}">{{ object.category.title }}</a></p>
       {% endif %}
+
+      <!-- Verifica se o usuário está autenticado -->
+      <div class="mb-4">
+        {{ tem_projeto }} Aqui ó: {{ object.id }}
+        {% if request.user.is_authenticated %}
+            {% if tem_projeto %}
+              <a href="{% url 'products:criar_projeto' %}" class="btn btn-primary btn-lg me-2">Criar meu projeto</a>
+              <a href="{% url 'products:associar_projeto' object.id %}" class="btn btn-success btn-lg">Associar-se a este projeto</a>
+            {% else %}
+              <p>Apenas para compra</p>  <!-- Exibe uma mensagem se não houver projeto associado -->
+            {% endif %}
+        {% else %}
+          <a href="{% url 'accounts:login' %}?next={{ request.path }}" class="btn btn-warning btn-lg">Crie sua conta para saber mais</a>
+        {% endif %}
+      </div>
       
       <div class="mb-4">
         {% include 'products/snippets/update-cart.html' with product=object cart=cart %}

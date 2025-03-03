@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html  # Import necessário para o método format_html
-from .models import Product, ProductImage
+from .models import Product, ProductImage,Projeto, ProjetoDetalhes
 
 # Inline para gerenciar imagens com preview
 class ProductImageInline(admin.TabularInline):  # ou admin.StackedInline se preferir
@@ -25,3 +25,20 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['title', 'description']  # Campos para pesquisa
     prepopulated_fields = {"slug": ("title",)}  # Preenchimento automático do campo slug
     ordering = ['-timestamp']  # Ordenação padrão (mais recente primeiro)
+
+
+# Configuração do admin para o modelo Projeto
+class ProjetoAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'descricao', 'produto')  # Campos exibidos na lista de projetos
+    list_filter = ('produto',)  # Filtros laterais
+    search_fields = ('titulo', 'descricao')  # Campos de busca
+    raw_id_fields = ('produto',)  # Campo de relacionamento como input de ID (útil para muitos registros)
+
+# Configuração do admin para o modelo ProjetoDetalhes
+class ProjetoDetalhesAdmin(admin.ModelAdmin):
+    list_display = ('projeto', 'reunioes_previstas', 'interesse_investidor', 'outros_passos')  # Campos exibidos na lista de detalhes
+    search_fields = ('projeto__titulo',)  # Busca pelo título do projeto relacionado
+
+# Registro dos modelos no admin
+admin.site.register(Projeto, ProjetoAdmin)
+admin.site.register(ProjetoDetalhes, ProjetoDetalhesAdmin)

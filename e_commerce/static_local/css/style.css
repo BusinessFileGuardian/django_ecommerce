@@ -37,7 +37,7 @@ basic
 }
 
 .container {
-     max-width: 1170px;
+     max-width: 1262px;
 }
 
 html {
@@ -292,15 +292,19 @@ button {
      text-transform: uppercase;
 }
 /* Estiliza o parágrafo principal dentro da .titlepage */
+
 .titlepage p {
      font-size: 1.75rem;
      font-weight: bold;
      color: #2e3192;
      line-height: 1.5;
      margin-bottom: 15px;
-     max-width: 102%;
+     max-width: 93%;
+     margin-top: 25px;
+     margin-left: -16px;
    }
-   
+
+
    /* Estiliza o trecho dentro do span .blue_light */
    .titlepage p .blue_light {
      font-size: inherit;
@@ -361,11 +365,11 @@ button {
 /*---------------------------- preloader area ----------------------------*/
 
 .loader_bg {
-     position: fixed;
+    
      z-index: 9999999;
-     background: #fff;
      width: 100%;
      height: 100%;
+     opacity: 0.3;
 }
 
 .loader {
@@ -516,6 +520,7 @@ ul.email li a i span {
      font-weight: bold;
      padding-bottom: 30px;
      text-transform: uppercase;
+     -webkit-text-stroke: 0.5px rgb(46, 49, 146);
 }
 
 .dream_img figure {
@@ -1084,9 +1089,9 @@ ul.conta li a {
      display: flex;
      -ms-flex-wrap: wrap;
      flex-wrap: wrap;
-     margin-right: -15px;
-     margin-left: -15px;
-     margin-top: 58px;
+     margin-right: -70px;
+     margin-left: 43px;
+     margin-top: -24px;
    }
 
 /*--------------------------------------------------------------------- 
