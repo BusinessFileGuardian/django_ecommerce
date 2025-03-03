@@ -1,0 +1,151 @@
+
+{% extends "base.html" %} 
+{% load static %} 
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+       
+         <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#"/></div>
+
+      </div>
+      <!-- top -->
+      <div class="full_bg">
+         <div class="slider_main">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <!-- carousel code -->
+                     <div id="banner1" class="carousel slide">
+                        <ol class="carousel-indicators">
+                           <li data-target="#banner1" data-slide-to="0" class="active"></li>
+                           <li data-target="#banner1" data-slide-to="1"></li>
+                           <li data-target="#banner1" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                           <!-- first slide -->
+                           <div class="carousel-item active">
+                              <div class="carousel-caption relative">
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="dream">
+                                          <h1 class="titulo-principal">
+                                            IMPULSIONE SUA IDEIA.
+                                          </h1>
+                                          <p>Transforme-a em um projeto, busque apoiadores e monte sua equipe.</p>
+                                          <a class="read_more" href="Javascript:void(0)">COMECE AGORA</a>    
+
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="dream_img">
+                                          <figure><img id="img_banner_1"src="{% static 'images/car-baner1 .png' %}" alt="#"/></figure>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- second slide -->
+                           <div class="carousel-item">
+                              <div class="carousel-caption relative">
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="dream">
+                                        <h1 class="titulo-principal">
+                                          SEJA UM INVESTIDOR!
+                                        </h1>
+                                        <p>Associe-se a projetos inovadores e explore lucros com soluções tecnológicas eficientes.</p>
+                                        <a class="read_more" href="Javascript:void(0)">VEJA MAIS</a>    
+
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="dream_img">
+                                          <figure><img id="img_banner_2" src="{% static 'images/invista.png' %}" alt="#"/></figure>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- third slide-->
+                           <div class="carousel-item">
+                              <div class="carousel-caption relative">
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="dream">
+                                        <h1 class="titulo-principal">
+                                          PROJETOS EM DESTAQUE.
+                                        </h1>
+                                        <p>Explore nosso e-commerce de projetos em andamento, com opções de associação, índices de pacotes e um canal aberto para suporte online.</p>
+                                        <a class="read_more" href="Javascript:void(0)">EXPLORAR</a>    
+
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="dream_img">
+                                          <figure><img id="img_banner_3"src="{% static 'images/mercado_softwares.png' %}" alt="#"/></figure>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- controls -->
+                        <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end banner -->
+
+
+
+    <body>
+      <!-- secctions sobreme -->
+<div class="container">
+<div class="row">
+   <div class="col-md-12">
+    <div class="titlepage text_align_center">
+        <p>O ESPAÇO ONDE SEUS PROJETOS GANHAM VIDA<span class="blue_light"> COM O SUPORTE DE ESPECIALISTAS </span>EM TECNOLOGIA E INOVAÇÃO!</p>
+    </div>
+   </div>
+</div>
+
+
+
+<section>
+<div class="faq-item">
+   <div class="faq-title"> 
+    <div class="about_img text_align_center">
+      <img id="title_section" src="{% static 'images/pg_projeto_0.png' %}" alt="#" />
+    </div> 
+    <p>
+      A Alcateia.cloud é uma plataforma inovadora que conecta talentos, ideias e oportunidades para transformar conceitos em realidade. Com uma infraestrutura robusta baseada em microsserviços, que nos permite oferecer suporte especializado para desenvolvimento, integração e escalabilidade de projetos tecnológicos.
+      Seja para criar novas soluções, integrar serviços ou buscar investidores e parceiros estratégicos, a Alcateia.cloud proporciona um ambiente dinâmico e colaborativo, impulsionando a inovação com tecnologia de ponta e uma equipe altamente qualificada. 🚀
+    </p>
+    <div class="container text-center mt-5">  
+      <div>
+     <p>Esse conteúdo é para você?</p>
+     <button class="glow-on-hover" type="button">Sim, quero explorar mais</button>
+     </div> 
+    </div>
+
+    </div>
+
+    <!-- Javascript files-->
+  </body>
+</html>
+
+{% endblock %}

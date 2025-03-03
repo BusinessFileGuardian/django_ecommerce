@@ -4,7 +4,7 @@
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" href="{% url 'home' %}">
-      <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+      <img src="{% static 'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="Logo">
       {% if nome_da_marca %}
         {{ nome_da_marca }}
       {% else %}
@@ -13,13 +13,13 @@
     </a>
 
     <!-- Botão para dispositivos móveis -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+      </button>
 
     <!-- Links do Navbar -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav mr-auto">
         <!-- Home -->
         <li class="nav-item {% if request.path == '/' %}active{% endif %}">
           <a class="nav-link" href="{% url 'home' %}">Home</a>
