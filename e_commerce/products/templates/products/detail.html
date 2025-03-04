@@ -58,12 +58,14 @@
 
       <!-- Verifica se o usuário está autenticado -->
       <div class="mb-4">
-        {{ tem_projeto }} Aqui ó: {{ object.id }}
         {% if request.user.is_authenticated %}
             {% if tem_projeto %}
-              <a href="{% url 'products:criar_projeto' %}" class="btn btn-primary btn-lg me-2">Criar meu projeto</a>
-              <a href="{% url 'products:associar_projeto' object.id %}" class="btn btn-success btn-lg">Associar-se a este projeto</a>
-            {% else %}
+            <div class="opcionas-projeto">
+            <p>Há outras opções para este projeto.<br> Explore!</p>
+              <a href="{% url 'products:criar_projeto' %}" class="btn btn-primary btn-sm">Criar meu projeto</a>
+              <a href="{% url 'products:associar_projeto' object.id %}" class="btn btn-success btn-sm">Associar-se a este projeto</a>
+            </div>
+              {% else %}
               <p>Apenas para compra</p>  <!-- Exibe uma mensagem se não houver projeto associado -->
             {% endif %}
         {% else %}

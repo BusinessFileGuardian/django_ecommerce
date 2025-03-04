@@ -8,6 +8,16 @@ from analytics.mixin import ObjectViewedMixin
 from carts.models import Cart
 from .models import Product
 from .models import Projeto
+from formtools.wizard.views import SessionWizardView
+from .forms import ProjetoPasso1Form, ProjetoPasso2Form, ProjetoPasso3Form
+
+class CriarProjetoWizard(SessionWizardView):
+    form_list = [ProjetoPasso1Form, ProjetoPasso2Form, ProjetoPasso3Form]
+    template_name = "criar_projeto_wizard.html"
+
+    def done(self, form_list, **kwargs):
+        dados = {key: form.cleaned_data for key, form in zip(self.form_list, form_list)}
+        return render(self.request, "projeto_concluido.html", {"dados": dados})
 
 
 def product_redirect_view(request, pk):
@@ -46,15 +56,6 @@ def confirmar_associacao(request, projeto_id):
     else:
         messages.error(request, "Você precisa estar logado para se associar a um projeto.")
         return redirect('account_login')  # Ajuste para a URL correta do login
-
-def criar_projeto(request, projeto_id):
-    projeto = get_object_or_404(Projeto, id=projeto_id)
-    detalhes = projeto.detalhes if hasattr(projeto, 'detalhes') else None
-
-    return render(request, 'products/associar_projeto.html', {
-        'projeto': projeto,
-        'detalhes': detalhes
-    })
 
 
 class ProductFeaturedListView(ListView):

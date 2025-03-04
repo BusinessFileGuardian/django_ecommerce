@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'search',
     'tags',
     'categories',
+    'formtools',
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
