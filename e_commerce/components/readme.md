@@ -1,0 +1,1 @@
+use para componentes globais

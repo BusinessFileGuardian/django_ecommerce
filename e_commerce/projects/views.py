@@ -2,11 +2,14 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404,redirect
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from formtools.wizard.views import SessionWizardView
-from .models import Projeto,TipoSolucao,ProjetoInteresse
 from products.models import Product
 from .forms import ProjetoInteresseForm, TipoSolucaoForm
 from django.http import HttpResponseRedirect
+from .models import Projeto,TipoSolucao,ProjetoInteresse
+import json
 # Create your views here.
 # A view para o ProjetoInteresseWizard
 class ProjetoInteresseWizardView(SessionWizardView):
@@ -88,3 +91,75 @@ def confirmar_associacao(request, projeto_id):
     else:
         messages.error(request, "Você precisa estar logado para se associar a um projeto.")
         return redirect('account_login')  # Ajuste para a URL correta do login
+
+
+#-------------- component Dropdrow projects
+
+
+# View para carregar a página
+def index(request, projeto_id):
+
+    try:
+        # Valida se o projeto existe
+        projeto = get_object_or_404(Projeto, id=projeto_id)
+        
+        # Filtra os tipos de solução associados ao projeto
+        opcoes = TipoSolucao.objects.filter(projetointeresse__projeto_id=projeto_id).distinct().order_by('nome')
+        
+        # Verifica se há opções disponíveis
+        if not opcoes:
+            # Renderiza um template alternativo com uma mensagem personalizada
+            return render(request, 'respostas/sem_opcoes_projeto_sem_solucoes.html', {'projeto': projeto})
+        
+        # Passa os valores para o template principal
+        return render(request, 'components/dropdrow.html', {'opcoes': opcoes})
+
+    except Exception as e:
+        # Log do erro (opcional)
+        produto = get_object_or_404(Product, pk=projeto_id)
+        print(f"Erro: {e}")
+        # Renderiza uma página de erro personalizada
+        return render(request, 'respostas/sem_opcoes_produto_sem_projeto.html', {
+            'produto': produto,
+            }, status=404)
+
+
+
+
+
+# View para buscar os resultados no banco de dados
+@csrf_exempt
+def buscar_resultados(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        escolhas = data.get("escolhas", [])
+        
+        resultados = ProjetoInteresse.objects.filter(nome__in=escolhas)
+        
+        return JsonResponse({"resultados": [op.nome for op in resultados]})
+    
+    return JsonResponse({"error": "Método inválido"}, status=400)
+
+# View para adicionar opções dinamicamente
+@csrf_exempt
+def adicionar_opcao(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        nome = data.get("nome")
+        if nome:
+            opcao, created = ProjetoInteresse.objects.get_or_create(nome=nome)
+            return JsonResponse({"success": True, "opcao": opcao.nome})
+    return JsonResponse({"error": "Nome inválido"}, status=400)
+
+# View para remover uma escolha
+@csrf_exempt
+def remover_opcao(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        nome = data.get("nome")
+        try:
+            opcao = ProjetoInteresse.objects.get(nome=nome)
+            opcao.delete()
+            return JsonResponse({"success": True})
+        except Opcao.DoesNotExist:
+            return JsonResponse({"error": "Opção não encontrada"}, status=404)
