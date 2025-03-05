@@ -91,32 +91,3 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"Image for {self.product.title}"
     
-class Projeto(models.Model):
-    titulo = models.CharField(max_length=255)
-    descricao = models.TextField()
-    produto = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True, related_name='projetos')  # Referência ao modelo Product
-    
-    def descricao_formatada(self):
-        return markdown.markdown(self.descricao)
-    
-    def __str__(self):
-        return f'{self.titulo} - {self.descricao[:50]}...'
-
-# ProjetoDetalhes model
-class ProjetoDetalhes(models.Model):
-    projeto = models.OneToOneField(Projeto, on_delete=models.CASCADE, related_name='detalhes')
-    reunioes_previstas = models.TextField(blank=True, null=True)
-    interesse_investidor = models.TextField(blank=True, null=True)
-    outros_passos = models.TextField(blank=True, null=True)
-
-    def reunioes_previstas_formatada(self):
-        return markdown.markdown(self.reunioes_previstas)
-    
-    def interesse_investidor_formatada(self):
-        return markdown.markdown(self.interesse_investidor)
-    
-    def outros_passos_formatada(self):
-        return markdown.markdown(self.outros_passos)
-
-    def __str__(self):
-        return f"Detalhes do projeto {self.projeto.titulo} - {self.reunioes_previstas[:50]}...' - {self.interesse_investidor[:50]}...' - {self.outros_passos[:50]}...'"

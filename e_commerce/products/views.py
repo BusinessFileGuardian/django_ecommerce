@@ -7,18 +7,7 @@ from analytics.models import ObjectViewed
 from analytics.mixin import ObjectViewedMixin
 from carts.models import Cart
 from .models import Product
-from .models import Projeto
-from formtools.wizard.views import SessionWizardView
-from .forms import ProjetoPasso1Form, ProjetoPasso2Form, ProjetoPasso3Form
-
-class CriarProjetoWizard(SessionWizardView):
-    form_list = [ProjetoPasso1Form, ProjetoPasso2Form, ProjetoPasso3Form]
-    template_name = "criar_projeto_wizard.html"
-
-    def done(self, form_list, **kwargs):
-        dados = {key: form.cleaned_data for key, form in zip(self.form_list, form_list)}
-        return render(self.request, "projeto_concluido.html", {"dados": dados})
-
+from projects.models import Projeto
 
 def product_redirect_view(request, pk):
     """
@@ -34,29 +23,6 @@ def product_redirect_view(request, pk):
         product.save(update_fields=['slug'])
     
     return redirect('products:detail', slug=product.slug)
-
-def associar_projeto(request, projeto_id):
-    projeto = get_object_or_404(Projeto, id=projeto_id)
-    detalhes = projeto.detalhes if hasattr(projeto, 'detalhes') else None
-
-    return render(request, 'products/associar_projeto.html', {
-        'projeto': projeto,
-        'detalhes': detalhes
-    })
-
-def confirmar_associacao(request, projeto_id):
-    projeto = get_object_or_404(Projeto, id=projeto_id)
-
-    if request.user.is_authenticated:
-        # Aqui você pode adicionar a lógica para associar o usuário ao projeto
-        projeto.usuarios.add(request.user)  # Exemplo, caso haja uma relação ManyToMany
-
-        messages.success(request, "Você foi associado ao projeto com sucesso!")
-        return redirect('products:detail', projeto.produto.id)
-    else:
-        messages.error(request, "Você precisa estar logado para se associar a um projeto.")
-        return redirect('account_login')  # Ajuste para a URL correta do login
-
 
 class ProductFeaturedListView(ListView):
     """Listagem de produtos destacados."""

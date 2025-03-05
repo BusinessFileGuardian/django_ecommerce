@@ -62,8 +62,8 @@
             {% if tem_projeto %}
             <div class="opcionas-projeto">
             <p>Há outras opções para este projeto.<br> Explore!</p>
-              <a href="{% url 'products:criar_projeto' %}" class="btn btn-primary btn-sm">Criar meu projeto</a>
-              <a href="{% url 'products:associar_projeto' object.id %}" class="btn btn-success btn-sm">Associar-se a este projeto</a>
+              <a href="{% url 'projects:criar_projeto' %}" class="btn btn-primary btn-sm">Criar meu projeto</a>
+              <a href="{% url 'projects:associar_projeto' object.id %}" class="btn btn-success btn-sm">Associar-se a este projeto</a>
             </div>
               {% else %}
               <p>Apenas para compra</p>  <!-- Exibe uma mensagem se não houver projeto associado -->

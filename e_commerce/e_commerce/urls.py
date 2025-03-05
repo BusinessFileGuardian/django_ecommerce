@@ -34,6 +34,7 @@ urlpatterns = [
     path('bootstrap/', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('search/', include("search.urls", namespace="search")),
     path('products/', include("products.urls", namespace="products")),
+    path('projects/', include("projects.urls", namespace="projects")),
     path('register/', lambda request: redirect('accounts:register')),
     path('login/', lambda request: redirect('accounts:login')),
     path('admin/', admin.site.urls),
