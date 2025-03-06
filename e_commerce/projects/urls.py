@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import associar_projeto,confirmar_associacao,product_redirect_view,criar_projeto
-from .views import ProjetoInteresseWizardView
+from .views import ProjetoInteresseWizardView,filtrar_projetos
 from .forms import TipoSolucaoForm, ProjetoInteresseForm
 #modelos de componnets Dropdron refatora depois
 from . import views
@@ -17,6 +17,7 @@ urlpatterns = [
       path('confirmar-associacao/<int:projeto_id>/', confirmar_associacao, name='confirmar_associacao'),
       path('id/<int:pk>/', product_redirect_view, name='product_redirect'),
       #component Dropdrow projects
+      path('filtrar_projetos/', filtrar_projetos, name='filtrar_projetos'),
       path('ver_projetos/<int:produto_id>/', views.mostrar_projetos_produto, name='mostrar_projetos_produto'),
       path('dropdrow_componnts/<int:produto_id>/', views.index, name='index'),
       path('buscar/', views.buscar_resultados, name='buscar_resultados'),

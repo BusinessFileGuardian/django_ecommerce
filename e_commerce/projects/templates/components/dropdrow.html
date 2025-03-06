@@ -43,6 +43,7 @@
             <option value="">Selecione uma opção...</option>
             {% for solucao in solucoes %}
                 <option value="{{ solucao.nome }}" data-tipo="solucao">{{ solucao.nome }}</option>
+                <option value="{{ produto_id }}" data-tipo="solucao">{{ produto_id }}</option>
             {% endfor %}
         </select>
     </div>
@@ -115,15 +116,51 @@
         };
 
         $("#buscarBtn").click(function() {
+            const produtoId = "{{ produto_id }}";
+            // Desabilita o botão para evitar múltiplos cliques
+            $(this).prop("disabled", true);
+            
+            console.log("Buscando projetos...",produtoId);
+            // Coleta as escolhas do usuário com seus tipos
+            let escolhas = [];
+            $("#escolhas .btn").each(function() {
+                let nome = $(this).text().trim();
+                let tipo = $(this).hasClass("btn-azul") ? "solucao" : "setor";
+
+                // Adiciona apenas se o nome não for vazio
+                if (nome) {
+                    escolhas.push({ nome: nome, tipo: tipo });
+                }
+            });
+
+            // Verifica se há escolhas válidas antes de enviar a requisição
+            if (escolhas.length === 0) {
+                alert("Por favor, selecione pelo menos uma opção.");
+                $(this).prop("disabled", false);  // Reabilita o botão
+                return;
+            }
+
+            // Envia as escolhas para o backend via AJAX
             $.ajax({
-                url: "/buscar/",
+                url: "/projects/filtrar_projetos/",  // Endpoint para filtrar projetos
                 type: "POST",
                 contentType: "application/json",
-                data: JSON.stringify({ escolhas: escolhas.map(e => e.nome) }),
+                data: JSON.stringify({ 
+                    escolhas: escolhas, 
+                    produto_id: produtoId 
+                }),
                 success: function(response) {
+                    // Exibe os resultados filtrados
                     $("#resultado").html(`<h5>Resultados encontrados:</h5><ul class="list-group">
-                        ${response.resultados.map(op => `<li class="list-group-item">${op}</li>`).join('')}
+                        ${response.projetos.map(projeto => `<li class="list-group-item">${projeto.nome}</li>`).join('')}
                     </ul>`);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Erro ao buscar projetos:", error);
+                },
+                complete: function() {
+                    // Reabilita o botão após a requisição ser concluída
+                    $("#buscarBtn").prop("disabled", false);
                 }
             });
         });

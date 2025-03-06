@@ -9,7 +9,6 @@ from products.models import Product
 from .forms import ProjetoInteresseForm, TipoSolucaoForm
 from django.http import HttpResponseRedirect
 from .models import Projeto,TipoSolucao,ProjetoInteresse,SetorAtuacao
-from django.db.models import Q
 import json
 # Create your views here.
 # A view para o ProjetoInteresseWizard
@@ -103,64 +102,15 @@ def filtrar_solucoes_e_setores(produto):
     setores = SetorAtuacao.objects.filter(projetointeresse__in=interesses).distinct()
     return solucoes, setores
 
-
-@csrf_exempt
-@csrf_exempt
-def filtrar_projetos(request):
-    if request.method == "POST":
-        try:
-            # Recebe os dados do frontend
-            data = json.loads(request.body)
-            escolhas = data.get("escolhas", [])
-            produto_id = data.get("produto_id")
-
-            # Filtra os projetos associados ao produto
-            projetos_filtrados = Projeto.objects.filter(produto=produto_id)
-
-            # Filtros dinâmicos
-            filtros_gerais = Q()  # Criamos um filtro único para usar OR
-
-            for escolha in escolhas:
-                nome = escolha.get("nome")
-                tipo = escolha.get("tipo")
-
-                if tipo == "solucao":
-                    filtros_gerais |= Q(interesses__tipo_solucao__nome=nome)  # Adiciona com OR lógico
-
-                elif tipo == "setor":
-                    filtros_gerais |= Q(interesses__setores_atuacao__nome=nome)  # Adiciona com OR lógico
-
-            # Aplica os filtros combinados
-            if filtros_gerais:
-                projetos_filtrados = projetos_filtrados.filter(filtros_gerais)
-
-            # Remove duplicatas
-            projetos_filtrados = projetos_filtrados.distinct()
-
-            # Prepara os resultados para o frontend
-            resultados = [{"nome": projeto.titulo} for projeto in projetos_filtrados]
-
-            return JsonResponse({"projetos": resultados})
-        except Exception as e:
-            return JsonResponse({"error": str(e)}, status=500)
-
-    return JsonResponse({"error": "Método não permitido"}, status=405)
-
-
-
 # View para carregar a página
 def index(request, produto_id):
-    produto_id=produto_id
     produto = get_object_or_404(Product, id=produto_id)
-    print(produto_id)
-    solucoes, setores  = filtrar_solucoes_e_setores(produto)
+    solucoes, setores = filtrar_solucoes_e_setores(produto)
     
     return render(request, 'components/dropdrow.html', {
         'solucoes': solucoes,
-        'setores': setores,
-        'produto_id': produto_id
+        'setores': setores
     })
-
 def mostrar_projetos_produto(request, produto_id):
     try:
         produto = get_object_or_404(Product, id=produto_id)
@@ -172,8 +122,7 @@ def mostrar_projetos_produto(request, produto_id):
         return render(request, 'components/mostrar_projetos.html', {
             'projects': projects,
             'solucoes': solucoes,
-            'setores': setores,
-            'produto_id': produto_id
+            'setores': setores
         })
         
     except Exception as e:
