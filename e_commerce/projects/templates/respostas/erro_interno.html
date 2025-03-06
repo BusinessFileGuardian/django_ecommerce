@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro Interno</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://st.depositphotos.com/2437697/4201/i/450/depositphotos_42014155-stock-photo-wolf-pack-running-in-the.jpg'); /* Imagem de fundo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            background: rgba(221, 206, 206, 0.66);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+            
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Animação de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Erro Interno - Problema ao carregar o projeto</h1>
+        <p>Ocorreu um erro ao tentar carregar o projeto ou as soluções associadas a ele. Estamos trabalhando para resolver isso o mais rápido possível.</p>
+        <p>Se o problema persistir, entre em contato com nossa equipe de suporte.</p>
+        <a href="/" class="btn">Voltar para a página inicial</a>
+    </div>
+
+    <script>
+        // JavaScript para adicionar interatividade
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.container');
+
+            // Efeito de hover no container
+            container.addEventListener('mouseenter', () => {
+                container.style.transform = 'scale(1.05)';
+                container.style.transition = 'transform 0.3s ease';
+            });
+
+            container.addEventListener('mouseleave', () => {
+                container.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

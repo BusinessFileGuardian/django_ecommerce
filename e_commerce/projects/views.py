@@ -105,14 +105,19 @@ def index(request, projeto_id):
         
         # Filtra os tipos de solução associados ao projeto
         opcoes = TipoSolucao.objects.filter(projetointeresse__projeto_id=projeto_id).distinct().order_by('nome')
-        
         # Verifica se há opções disponíveis
         if not opcoes:
-            # Renderiza um template alternativo com uma mensagem personalizada
-            return render(request, 'respostas/sem_opcoes_projeto_sem_solucoes.html', {'projeto': projeto})
+
+            projects = Projeto.objects.filter(produto_id=projeto_id)  
+            print(projects)
+            return render(request, 'components/mostrar_projetos.html', {'projects': projects})
+            
+            if not projects:
+                return render(request, 'respostas/sem_opcoes_projeto_sem_solucoes.html', {'projects': projects})
         
         # Passa os valores para o template principal
-        return render(request, 'components/dropdrow.html', {'opcoes': opcoes})
+        #return render(request, 'components/dropdrow.html', {'opcoes': opcoes})
+        return render(request, 'components/mostrar_projetos.html', {'opcoes': opcoes})
 
     except Exception as e:
         # Log do erro (opcional)
