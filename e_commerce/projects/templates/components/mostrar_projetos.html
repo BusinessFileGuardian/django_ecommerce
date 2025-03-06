@@ -82,11 +82,11 @@
 <body>
 
     <h1>Todos os Produtos</h1>
-{% include "components/dropdrow.html" %} 
+    {% include "components/dropdrow.html" with produto_id=produto_id %}
     <div class="cards-container">
         {% for project in projects %}
             <div class="card">
-                <h3>{{ project.nome }}</h3>
+                <h3><strong>{{ project.titulo }}</strong></h3>
                 <p>{{ project.descricao }}</p>
                 <a href="{% url 'projects:associar_projeto' project.id %}" class="btn">Ver Detalhes</a>
             </div>

@@ -118,17 +118,17 @@ def filtrar_projetos(request):
             projetos_filtrados = Projeto.objects.filter(produto=produto_id)
 
             # Filtros dinâmicos
-            filtros_gerais = Q()  # Criamos um filtro único para usar OR
+            filtros_gerais = Q()  # Criamos um filtro único para usar AND
 
             for escolha in escolhas:
                 nome = escolha.get("nome")
                 tipo = escolha.get("tipo")
 
                 if tipo == "solucao":
-                    filtros_gerais |= Q(interesses__tipo_solucao__nome=nome)  # Adiciona com OR lógico
+                    filtros_gerais &= Q(interesses__tipo_solucao__nome=nome)  # Adiciona com AND lógico
 
                 elif tipo == "setor":
-                    filtros_gerais |= Q(interesses__setores_atuacao__nome=nome)  # Adiciona com OR lógico
+                    filtros_gerais &= Q(interesses__setores_atuacao__nome=nome)  # Adiciona com AND lógico
 
             # Aplica os filtros combinados
             if filtros_gerais:
@@ -140,7 +140,13 @@ def filtrar_projetos(request):
             # Prepara os resultados para o frontend
             resultados = [{"nome": projeto.titulo} for projeto in projetos_filtrados]
 
+            # Se um único projeto é encontrado com todas as características, não será necessário mostrar misturas
+            if len(projetos_filtrados) == 1:
+                return JsonResponse({"projetos": resultados})
+            
+            # Caso contrário, você pode mostrar mais projetos ou manipular de outra forma.
             return JsonResponse({"projetos": resultados})
+
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
 
