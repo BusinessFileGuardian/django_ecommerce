@@ -8,7 +8,7 @@ from formtools.wizard.views import SessionWizardView
 from products.models import Product
 from .forms import ProjetoInteresseForm, TipoSolucaoForm
 from django.http import HttpResponseRedirect
-from .models import Projeto,TipoSolucao,ProjetoInteresse
+from .models import Projeto,TipoSolucao,ProjetoInteresse,SetorAtuacao
 import json
 # Create your views here.
 # A view para o ProjetoInteresseWizard
@@ -95,38 +95,41 @@ def confirmar_associacao(request, projeto_id):
 
 #-------------- component Dropdrow projects
 
+def filtrar_solucoes_e_setores(produto):
+    projetos_do_produto = Projeto.objects.filter(produto=produto)
+    interesses = ProjetoInteresse.objects.filter(projeto__in=projetos_do_produto)
+    solucoes = TipoSolucao.objects.filter(projetointeresse__in=interesses).distinct()
+    setores = SetorAtuacao.objects.filter(projetointeresse__in=interesses).distinct()
+    return solucoes, setores
 
 # View para carregar a página
-def index(request, projeto_id):
-
+def index(request, produto_id):
+    produto = get_object_or_404(Product, id=produto_id)
+    solucoes, setores = filtrar_solucoes_e_setores(produto)
+    
+    return render(request, 'components/dropdrow.html', {
+        'solucoes': solucoes,
+        'setores': setores
+    })
+def mostrar_projetos_produto(request, produto_id):
     try:
-        # Valida se o projeto existe
-        projeto = get_object_or_404(Projeto, id=projeto_id)
+        produto = get_object_or_404(Product, id=produto_id)
+        solucoes, setores = filtrar_solucoes_e_setores(produto)
         
-        # Filtra os tipos de solução associados ao projeto
-        opcoes = TipoSolucao.objects.filter(projetointeresse__projeto_id=projeto_id).distinct().order_by('nome')
-        # Verifica se há opções disponíveis
-        if not opcoes:
-
-            projects = Projeto.objects.filter(produto_id=projeto_id)  
-            print(projects)
-            return render(request, 'components/mostrar_projetos.html', {'projects': projects})
-            
-            if not projects:
-                return render(request, 'respostas/sem_opcoes_projeto_sem_solucoes.html', {'projects': projects})
+        # Filtra os projetos associados ao produto
+        projects = Projeto.objects.filter(produto=produto)
         
-        # Passa os valores para o template principal
-        #return render(request, 'components/dropdrow.html', {'opcoes': opcoes})
-        return render(request, 'components/mostrar_projetos.html', {'opcoes': opcoes})
-
+        return render(request, 'components/mostrar_projetos.html', {
+            'projects': projects,
+            'solucoes': solucoes,
+            'setores': setores
+        })
+        
     except Exception as e:
-        # Log do erro (opcional)
-        produto = get_object_or_404(Product, pk=projeto_id)
         print(f"Erro: {e}")
-        # Renderiza uma página de erro personalizada
         return render(request, 'respostas/sem_opcoes_produto_sem_projeto.html', {
             'produto': produto,
-            }, status=404)
+        }, status=404)
 
 
 

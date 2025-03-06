@@ -17,7 +17,8 @@ urlpatterns = [
       path('confirmar-associacao/<int:projeto_id>/', confirmar_associacao, name='confirmar_associacao'),
       path('id/<int:pk>/', product_redirect_view, name='product_redirect'),
       #component Dropdrow projects
-      path('dropdrow_componnts/<int:projeto_id>/', views.index, name='index'),
+      path('ver_projetos/<int:produto_id>/', views.mostrar_projetos_produto, name='mostrar_projetos_produto'),
+      path('dropdrow_componnts/<int:produto_id>/', views.index, name='index'),
       path('buscar/', views.buscar_resultados, name='buscar_resultados'),
       path('adicionar/', views.adicionar_opcao, name='adicionar_opcao'),
       path('remover/', views.remover_opcao, name='remover_opcao'),
